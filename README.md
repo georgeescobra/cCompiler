@@ -3,8 +3,59 @@
 - LEARN C++
 - Have a better understanding of compilers/interpreters
 
+# RESOURCES
+- http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf
+- http://www.cs.man.ac.uk/~pjj/farrell/comp2.html
+
+
+
 # NOTES ABOUT COMPILERS
-- 
+- Compiler translates one langauge to another
+    - Most of the time this is done from some high language to Assembly or object code
+    - Some cases high language -> high language (C++ -> C)
+- Chomsky Normal Form (CNF)
+    - uses a series of intermediate tokens to describe syntax rule
+    - first person to divide language study into syntax and semantics
+    - ex: (more or less standard definition of expression used by most compuer languages)
+    -   S -> EXPRESSION
+        EXPRESSION -> TERM | TERM + EXPRESSION | TERM - EXPRESSION
+        TERM -> FACTOR | FACTOR * EXPRESSION | FACTOR / EXPRESSION
+        FACTOR -> NUMBER | ( EXPRESSION )
+        NUMBER -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 
+                1 NUMBER | 2 NUMBER | 3 NUMBER | 4 NUMBER |
+                5 NUMBER | 6 NUMBER | 7 NUMBER | 8 NUMBER |
+                9 NUMBER | 0 NUMBER 
+    - EXPRESSION always being on the right hand side is purposeful
+        - this idea is called right recursive language
+        - if the recursion was on the left side it would create an infinite loop
+
+- Extended Backus Naur Form (EBNF)
+    - I learned this in CSC600
+    - most compiler writers prefer to work with EBNF
+    - [] denotes 0 or 1
+    - {} denotes 1 or more
+    - ex:
+        S :== EXPRESSION
+        EXPRESSION :== TERM | TERM { [+,-] TERM] }
+        TERM :== FACTOR | FACTOR { [*,/] FACTOR] }
+        FACTOR :== NUMBER | '(' EXPRESSION ')'
+        NUMBER :==  '1' | '2' | '3' | '4' | '5' | 
+                    '6' | '7' | '8' | '9' | '0' | 
+                    '1' NUMBER | '2' NUMBER | '3' NUMBER | 
+                    '4' NUMBER | '5' NUMBER | '6' NUMBER |
+                    '7' NUMBER | '8' NUMBER | '9' NUMBER | '0' NUMBER 
+
+- There are automatic compiler creators
+    - YACC for UNIX
+        - Creates a compiler based on grammer ()
+- Computer Languages must be much more strictly defined in order to keep them computable
+
+## TERMS
+- Syntax: defining rules for the language
+- Semantics: defining the meaning behind the rules
+- Grammar: description of syntax of a language
+
+
 
 # NOTES ABOUT C++ (REFRESHER)
 - For a program to run it its source text has to be processed by a compiler
